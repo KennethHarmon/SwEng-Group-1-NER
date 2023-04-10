@@ -5,7 +5,9 @@ import spacy
 from spacy import displacy
 import en_core_web_trf
 from flaskext.markdown import Markdown
+from presidio_analyzer import AnalyzerEngine
 nlp = spacy.load('en_core_web_trf')
+analyzer = AnalyzerEngine()
 
 app = Flask(__name__)
 Markdown(app)
@@ -24,6 +26,15 @@ def process():
 		doc = nlp(rawtext)
 		d = []
 		displacy_text = ""
+
+		pii_results = analyzer.analyze(text=rawtext, entities=['EMAIL_ADDRESS', 'IP_ADDRESS', 'PHONE NUMBER'], language='en')
+		pii_results_formatted = []
+
+		for result in pii_results:
+			pii_results_formatted.append(f"{rawtext[result.start:result.end]} : {result.entity_type}")
+
+		pii_number = len(pii_results_formatted)
+
 		for ent in doc.ents:
 			d.append((ent.label_, ent.text))
 			df = pd.DataFrame(d, columns=('named entity', 'output'))
@@ -44,6 +55,7 @@ def process():
 			SPEC_named_entity = df.loc[df['named entity'] == 'SPEC']['output']
 			SHORT_FORM_named_entity = df.loc[df['named entity'] == 'SHORT_FORM']['output']
 			ID_named_entity = df.loc[df['named entity'] == 'ID']['output']
+
 		if choice == "displacy_render":
 			html = displacy.render(doc, style="ent")
 			html = html.replace("\n\n", "\n")
@@ -53,6 +65,8 @@ def process():
 		elif choice == 'all':
 			#Map the named entity and output to a list
 			results = [f"{a} : {b}" for a,b in zip(df['output'], df['named entity'])]
+			results = results + pii_results_formatted
+			print(results)
 			num_of_results = len(results)
 		elif choice == 'organization':
 			results = ORG_named_entity
@@ -107,7 +121,7 @@ def process():
 			num_of_results = len(results)
 		
 	
-	return render_template("index.html",results=results,num_of_results = num_of_results, displacy_text=displacy_text)
+	return render_template("index.html",results=results,num_of_results = num_of_results, displacy_text=displacy_text, pii_results=pii_results_formatted, pii_number=pii_number)
 
 
 if __name__ == '__main__':
