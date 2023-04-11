@@ -1,0 +1,37 @@
+import openai
+import spacy
+import json
+
+openai.api_key = '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'
+nlp = spacy.load("en_core_web_sm")
+
+def label_post(post):
+    doc = nlp(post)
+    labeled_post = []
+    for ent in doc.ents:
+        labeled_post.append((ent.text, ent.label_))
+    return labeled_post
+
+prompt = '''Generate 20 synthetic Twitter posts complaining about Dell's products or services. Each post should be a standalone tweet and should not contain any instructions or meta-information. Example post: "Dell's terrible support: I bought a Dell laptop a few years ago and the battery only lasted for a few hours. I've tried calling their support team and they said I would have to pay for a repair. #dell #dellsupport '''
+response = openai.Completion.create(
+    engine="davinci",
+    prompt=prompt,
+    temperature=2,
+    max_tokens=20,
+    top_p=1,
+    n=20
+)
+
+posts = []
+for choice in response['choices']:
+    post = choice['text']
+    labeled_post = label_post(post)
+    posts.append({"post": post, "labeled_post": labeled_post})
+
+for post in posts:
+    print("Post:")
+    print(post['post'])
+    print("\nLabels:")
+    for label in post['labeled_post']:
+        print(f"{label[0]}: {label[1]}")
+    print("\n")

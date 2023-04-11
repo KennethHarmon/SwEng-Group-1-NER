@@ -1,0 +1,40 @@
+{
+    "title": "My Dell G7 17 gaming laptop experience",
+    "body": "I've been using the Dell G7 17 gaming laptop for a few months now and I must say I'm pretty impressed with it. The hardware specs are great with a 10th Gen Intel Core i7 processor, 16GB of RAM, and an NVIDIA GeForce RTX 2060 graphics card. The laptop runs smoothly even when playing graphics-intensive games. However, I faced an issue with the cooling system of the laptop which caused it to heat up quickly. I contacted Dell's customer support and they helped me resolve the issue by replacing the faulty cooling system within a few days. The laptop now runs perfectly fine without any heating issues. Overall, I'm very satisfied with my purchase.",
+    "entities": {
+        "org": "Dell",
+        "person": "",
+        "location": "",
+        "email": "",
+        "id": "",
+        "relative_date": "a few months",
+        "date_time": "",
+        "tech_issue": "cooling system causing the laptop to heat up quickly",
+        "non_tech_issue": "",
+        "tech_resolution": "Dell's customer support helped me resolve the issue by replacing the faulty cooling system within a few days",
+        "non_tech_resolution": "",
+        "hardware": ["Dell G7 17 gaming laptop", "10th Gen Intel Core i7 processor", "16GB of RAM", "NVIDIA GeForce RTX 2060 graphics card"],
+        "spec": "",
+        "software": "runs smoothly",
+        "currency": ""
+    }
+    "title": "Dell Alienware m15 R5: A Beastly Gaming Laptop",
+    "body": "The Dell Alienware m15 R5 is a beastly gaming laptop that can handle any game you throw at it. It comes with a 10th Gen Intel Core i9 processor, 32GB of RAM, and a 1TB SSD. The NVIDIA GeForce RTX 3070 graphics card delivers smooth and stunning visuals even at high settings. The laptop also has a sleek design and customizable RGB lighting, making it a great choice for gamers who want to stand out. If you're looking for a powerful gaming laptop, the Dell Alienware m15 R5 is definitely worth considering.",
+    "entities": {
+        "org": "Dell",
+        "person": "",
+        "location": "",
+        "email": "",
+        "id": "",
+        "relative_date": "",
+        "date_time": "",
+        "tech_issue": "",
+        "non_tech_issue": "",
+        "tech_resolution": "",
+        "non_tech_resolution": "",
+        "hardware": ["Dell Alienware m15 R5", "10th Gen Intel Core i9 processor", "32GB of RAM", "1TB SSD", "NVIDIA GeForce RTX 3070 graphics card"],
+        "spec": "",
+        "software": "",
+        "currency": ""
+    }
+}
