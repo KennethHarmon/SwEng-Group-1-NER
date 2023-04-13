@@ -13,7 +13,7 @@ HTML_WRAPPER = """<div style="overflow-x: auto; border: 1px solid #e6e9ef;
 
 @app.route('/')
 def index():
-	return render_template("index.html", num_of_results = 0, displacy_text="")
+    return render_template("index.html", num_of_results = 0, displacy_text="")
 
 @app.route('/process',methods=["POST"])
 def process():
@@ -37,7 +37,8 @@ def process():
             TECH_ISSUE_named_entity = df.loc[df['named entity'] == 'TECH_ISSUE']['output']
             NON_TECH_ISSUE_named_entity = df.loc[df['named entity'] == 'NON_TECH_ISSUE']['output']
             TECH_RESOLUTION_named_entity = df.loc[df['named entity'] == 'TECH_RESOLUTION']['output']
-            NON_TECH_RESOLUTION_named_entity = df.loc[df['named entity'] == 'NON_TECH_RESOLUTION']['output']
+            NON_TECH_RESOLUTION_named_entity = df.loc[df['named entity'] == 
+                'NON_TECH_RESOLUTION']['output']
             HARDWARE_named_entity = df.loc[df['named entity'] == 'HARDWARE']['output']
             SOFTWARE_named_entity = df.loc[df['named entity'] == 'SOFTWARE']['output']
             SPEC_named_entity = df.loc[df['named entity'] == 'SPEC']['output']
@@ -104,9 +105,9 @@ def process():
         elif choice == 'id':
             results = ID_named_entity
             num_of_results = len(results)
-		
 	
-    return render_template("index.html",results=results,num_of_results = num_of_results, displacy_text=displacy_text)
+
+    reurn render_template("index.html",results=results,num_of_results = num_of_results, displacy_text=displacy_text)
 
 
 if __name__ == '__main__':
