@@ -105,9 +105,9 @@ def process():
         elif choice == 'id':
             results = ID_named_entity
             num_of_results = len(results)
-	
 
-    reurn render_template("index.html",results=results,num_of_results = num_of_results, displacy_text=displacy_text)
+
+    return render_template("index.html",results=results,num_of_results = num_of_results, displacy_text=displacy_text)
 
 
 if __name__ == '__main__':
